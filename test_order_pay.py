@@ -27,6 +27,7 @@ class TestOrderPay(unittest.TestCase):
         print("支付结果为:",result)
         self.assertEqual(1999,result.get("account_remain"))
 
+    # 如果支付出现异常情况
     def test04(self):
         UserService.get_user_amount = mock.Mock(side_effect = ConnectionAbortedError)
         self.assertRaises(ConnectionAbortedError, UserService.get_user_amount)
